@@ -38,7 +38,7 @@ async function startTabBasedApp(params) {
 
       components.forEach(component => {
         const screenInstanceID = _.uniqueId('screenInstanceID');
-  
+
         const {
           navigatorStyle,
           navigatorButtons,
@@ -50,8 +50,8 @@ async function startTabBasedApp(params) {
         passProps.navigatorID = navigatorID;
         passProps.screenInstanceID = screenInstanceID;
         passProps.navigatorEventID = navigatorEventID;
-  
-  
+
+
         component.navigationParams = {
           screenInstanceID,
           navigatorStyle,
@@ -60,15 +60,15 @@ async function startTabBasedApp(params) {
           navigatorID: navigatorID,
           passProps
         };
-  
+
         component.subtitle = params.subtitle;
         component.passProps = passProps;
         component.navigatorStyle = navigatorStyle;
 
         savePassProps(component);
-  
+
       });
-        
+
     }
 
     const {
@@ -366,7 +366,7 @@ function navigatorPush(navigator, params) {
     animationType: params.animationType,
     passProps: passProps,
     style: navigatorStyle,
-    backButtonTitle: params.backButtonTitle,
+    backButtonTitle: '',
     backButtonHidden: params.backButtonHidden,
     leftButtons: navigatorButtons.leftButtons,
     rightButtons: navigatorButtons.rightButtons,
