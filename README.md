@@ -43,6 +43,24 @@ If you're trying to deliver a user experience that's on par with the best native
 
 For example, this package replaces the native [NavigatorIOS](https://facebook.github.io/react-native/docs/navigatorios.html) that has been [abandoned](https://facebook.github.io/react-native/docs/navigator-comparison.html) in favor of JS-based solutions that are easier to maintain. For more details see in-depth discussion [here](https://github.com/wix/react-native-controllers#why-do-we-need-this-package).
 
+## Custom Changes
+As `react-native-navigation` doesn't have some customize settings, we have made the following changes:
+
+1. **Set default back button title to empty in iOS**
+
+Change file `node_modules/react-native-navigation/src/deprecated/platformSpecificDeprecated.ios.js` - line `369`
+
+from `backButtonTitle: params.backButtonTitle,` to `backButtonTitle: '',`
+
+2. **Set Keyboard Adjust method to `ADJUSTPAN` inside Modal for Android**
+
+Change file `node_modules/react-native-navigation/android/app/src/main/java/com/reactnativenavigation/controllers/Modal.java` - line `163`
+
+from `...WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE` to `...WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN`
+
+3. **Known issue when changing tabbar icon**
+
+As the function `changeTabButton` in `react-native-navigation` will change the default color of target tab button to active color, which is a bug. Thus change files according to this PR: https://github.com/wix/react-native-navigation/pull/2981
 
 ## License
 
